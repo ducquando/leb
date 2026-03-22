@@ -27,7 +27,7 @@ namespace leb {
         size_t i=0, j=0, inter=0;
         while (i < a.size() && j < b.size()) {
             if (a[i] == b[j]) { ++inter; ++i; ++j; }
-            else if (a[i] < b[i]) { ++i; }
+            else if (a[i] < b[j]) { ++i; }
             else { ++j; }
         }
         const size_t uni = a.size() + b.size() - inter;

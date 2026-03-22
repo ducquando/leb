@@ -27,6 +27,10 @@ int main(int argc, char** argv) {
     auto data = read_fimi(path);
     LeBIndex idx(M, order);
     idx.build(std::move(data));
+    if (idx.sets.empty()) {
+        std::cout << "QUERY_AVG_MS 0\n";
+        return 0;
+    }
 
     std::mt19937_64 rng(seed);
     std::uniform_int_distribution<size_t> unif(0, idx.sets.size()-1);

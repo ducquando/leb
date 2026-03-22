@@ -22,7 +22,12 @@ namespace leb {
         uint64_t pack(const std::vector<uint32_t>& V) const {
             if ((int)V.size() != (M + 1)) throw std::runtime_error("V size mismatch");
             uint64_t K = 0;
-            for (int i = 0; i <= M; ++i) { uint64_t vi = std::min<uint64_t>(V[i], field_mask); K << b; K |= vi; }
+            for (int i = 0; i <= M; ++i) {
+                uint64_t vi = std::min<uint64_t>(V[i], field_mask);
+                K <<= b;
+                K |= vi;
+            }
+            return K;
         }
 
         // Unpack into vector<uint32_t>

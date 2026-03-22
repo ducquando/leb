@@ -2,6 +2,8 @@
 #include "leb_index.hpp"
 
 namespace leb {
+    enum class FilterMode { NONE, SBDF, CBDF };
+
     struct FBFA {
         // Compute K- and K+
         static std::pair<std::vector<uint32_t>, std::vector<uint32_t>>
@@ -32,6 +34,7 @@ namespace leb {
 
     struct LeBQ {
         const LeBIndex& index;
+        FilterMode mode = FilterMode::CBDF;     // default to CBDF
         explicit LeBQ(const LeBIndex& idx) : index(idx) {}
 
         // Length bounds for Jaccard
@@ -45,26 +48,37 @@ namespace leb {
             return Lmax(qlen, delta) - (uint32_t)qlen;
         }
 
-        // Early stop on total difference > lambda
+        // CBDF: Early stop when total difference > lambda
         bool pass_cbdf(const std::vector<uint32_t>& QV, Key64 K, uint32_t lambda) const {
             uint32_t sum = 0;
             for (int i = 1; i <= index.M; ++i) {
-                uint32_t kv = index.field(K, i);
-                uint32_t qv = QV[i];
-                sum += (kv>qv) ? (kv-qv) : (qv-kv);
+                uint32_t kv = index.field(K, i), qv = QV[i];
+                uint32_t d = (kv>qv) ? (kv-qv) : (qv-kv);
+                sum += d;
                 if (sum > lambda) return false;
             }
             return true;
         }
 
+        // SBDF: If any single-bucket diff > lambda, reject
+        bool pass_sbdf(const std::vector<uint32_t>& QV, Key64 K, uint32_t lambda) const {
+            for (int i=1;i<=index.M;++i) {
+                uint32_t kv = index.field(K, i), qv = QV[i];
+                uint32_t d = (kv>qv)?(kv-qv):(qv-kv);
+                if (d > lambda) return false;
+            }
+            return true;
+        }
+
         // Return vector of matching setIDs
-        std::vector<SetID> query(const std::vector<Item>& q, double delta) const {
+        std::vector<SetID> query(const std::vector<Item>& q, double delta, uint64_t* out_candidates = nullptr) const {
+            uint64_t candidates = 0;
             std::vector<SetID> results;
             auto QV = index.mapV(q);
-            const size_t qlen = q.size();
-            const uint32_t L_minus = Lmin(qlen, delta);
-            const uint32_t L_plus  = Lmax(qlen, delta);
-            const uint32_t lambda  = lambdaQ(qlen, delta);
+            size_t qlen = q.size();
+            uint32_t L_minus = Lmin(qlen, delta);
+            uint32_t L_plus  = Lmax(qlen, delta);
+            uint32_t lambda  = lambdaQ(qlen, delta);
             auto [KminusV, KplusV] = FBFA::compute(QV, lambda, L_minus, L_plus, index.Mb);
             Key64 Kmin = index.packV(KminusV);
             Key64 Kmax = index.packV(KplusV);
@@ -75,14 +89,19 @@ namespace leb {
                 Key64 K = index.tree.curr_key(it);
                 if (K > Kmax) break;
 
-                if (pass_cbdf(QV, K, lambda)) {
-                    for (auto id : index.tree.curr_list(it)) {
-                        // Verify true Jaccard
-                        if (leb::jaccard(index.sets[id], q) >= delta) results.push_back(id);
-                    }
+                bool ok = true;
+                if (mode == FilterMode::SBDF) ok = pass_sbdf(QV, K, lambda);
+                else if (mode == FilterMode::CBDF) ok = pass_cbdf(QV, K, lambda);
+
+                if (ok) {
+                    // Verify true Jaccard
+                    const auto& L = index.tree.curr_list(it);
+                    candidates += L.size();
+                    for (auto id : L) if (leb::jaccard(index.sets[id], q) >= delta) results.push_back(id);
                 }
                 if (!index.tree.next(it)) break;
             }
+            if (out_candidates) *out_candidates = candidates;
             return results;
         }
     };

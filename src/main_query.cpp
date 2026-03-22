@@ -12,9 +12,11 @@ static std::vector<std::vector<Item>> read_fimi(const std::string& path);
 
 int main(int argc, char** argv) {
     if (argc < 9) {
-        std::cerr << "Usage: main_query <dataset_path> <M> <bpt_order> <algo:lebq|lebq+> <delta> <num_queries> <runs> <seed>\n";
+        std::cerr << "Usage: main_query <dataset_path> <M> <bpt_order> <algo:lebq|lebq+> <delta> <num_queries> <runs> <seed> [--filter none|sbdf|cbdf] [--log-cand 1]\n";
         return 1;
     }
+
+    // Arguments
     std::string path = argv[1];
     int M = std::stoi(argv[2]);
     int order = std::stoi(argv[3]);
@@ -23,6 +25,15 @@ int main(int argc, char** argv) {
     int numQ = std::stoi(argv[6]);
     int runs = std::stoi(argv[7]);
     uint64_t seed = std::stoull(argv[8]);
+
+    // Optional arguments
+    std::string filter = "cbdf";
+    bool log_cand = false;
+    for (int i = 9; i < argc; ++i) {
+        std::string a = argv[i];
+        if (a=="--filter") { filter = argv[++i]; }
+        else if (a=="--log-cand") { log_cand = std::stoi(argv[++i])!=0; }
+    }
 
     auto data = read_fimi(path);
     LeBIndex idx(M, order);
@@ -41,25 +52,34 @@ int main(int argc, char** argv) {
     for (int i=0;i<numQ;++i) queries.push_back(idx.sets[unif(rng)]);
 
     double total_ms = 0.0;
+    uint64_t total_candidates = 0;
     for (int r=0;r<runs;++r) {
         Timer t; t.tick();
         size_t total_found = 0;
         if (algo == "lebq") {
             LeBQ q(idx);
+            q.mode = (filter=="none") ? FilterMode::NONE : (filter=="sbdf") ? FilterMode::SBDF : FilterMode::CBDF;
             for (auto& Q : queries) {
-                auto out = q.query(Q, delta);
+                uint64_t cand = 0;
+                auto out = q.query(Q, delta, &cand);
+                total_candidates += cand;
                 total_found += out.size();
             }
         } else {
             LeBQPlus qp(idx);
+            qp.mode = (filter=="none") ? FilterMode::NONE : (filter=="sbdf") ? FilterMode::SBDF : FilterMode::CBDF;
             for (auto& Q : queries) {
-                auto out = qp.query(Q, delta);
+                uint64_t cand = 0;
+                auto out = qp.query(Q, delta, &cand);
+                total_candidates += cand;
                 total_found += out.size();
             }
         }
         total_ms += t.to_ms();
     }
+
     std::cout << "QUERY_AVG_MS " << (total_ms / runs) << "\n";
+    if (log_cand) std::cout << "CANDIDATES " << total_candidates / (double)(numQ * runs) << "\n";
     return 0;
 }
 

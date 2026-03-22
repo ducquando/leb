@@ -1,6 +1,7 @@
-
 .DS_Store
+.vscode
+lastfm1k.fimi
+
 build/
-data/lastfm-360k.tar.gz
-data/lastfm-dataset-360K/
-scripts/prep_lastfm360k.py
+results/
+scripts/prep_lastfm*k.py

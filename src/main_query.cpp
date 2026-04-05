@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         total_ms += t.to_ms();
     }
 
-    std::cout << "QUERY_AVG_MS " << (total_ms / runs) << "\n";
+    std::cout << "QUERY_AVG_MS " << (total_ms / (double)(numQ * runs)) << "\n";
     if (log_cand) std::cout << "CANDIDATES " << total_candidates / (double)(numQ * runs) << "\n";
     return 0;
 }

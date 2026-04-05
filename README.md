@@ -110,8 +110,8 @@ Output fields include:
 Examples:
 
 ```bash
-./build/main_query data/kosarak.dat 8 256 lebq 0.7 1000 10 42 --filter cbdf --log-cand 1
-./build/main_query data/kosarak.dat 8 256 lebq+ 0.7 1000 10 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 128 lebq 0.7 1000 10 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 128 lebq+ 0.7 1000 10 42 --filter cbdf --log-cand 1
 ```
 
 Output fields include:

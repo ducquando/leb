@@ -28,7 +28,7 @@ df_les = pd.read_csv(f"results/les3_dualtrans_{DATASET}.csv")
 # M experiment
 # -----------------------
 dm = pd.read_csv(f"results/m_experiment_{DATASET}.csv")
-sns.lineplot(data=dm, x="M", y="avg_ms", hue="method")
+sns.lineplot(data=dm, x="M", y="avg_ms", hue="method", marker="o")
 plt.title("Impact of number of buckets M on query time (δ=0.7)")
 plt.ylabel("Avg query time (ms)")
 plt.xlabel("M")
@@ -39,7 +39,7 @@ plt.clf()
 # Filter experiment
 # -----------------------
 df = pd.read_csv(f"results/filter_experiment_{DATASET}.csv")
-sns.lineplot(data=df, x="delta", y="avg_ms", hue="method", style="filter")
+sns.lineplot(data=df, x="delta", y="avg_ms", hue="method", style="filter", marker="o")
 plt.title("Average Run Time by filtering mode (M=8)")
 plt.savefig(f"results/figs/filter_experiment_ms_{DATASET}.png", bbox_inches="tight")
 plt.clf()
@@ -47,7 +47,7 @@ plt.clf()
 # -----------------------
 # Filter experiment
 # -----------------------
-sns.lineplot(data=df, x="delta", y="avg_candidates", hue="method", style="filter")
+sns.lineplot(data=df, x="delta", y="avg_candidates", hue="method", style="filter", marker="o")
 plt.title("Number of Candidates by filtering mode (M=8)")
 plt.savefig(f"results/figs/filter_experiment_cand_{DATASET}.png", bbox_inches="tight")
 plt.clf()
@@ -64,8 +64,8 @@ plt.clf()
 # -----------------------
 # Baseline comparisons
 # -----------------------
-# comp = pd.read_csv(f"results/comparison_{DATASET}.csv")
-# sns.lineplot(data=comp, x="delta", y="avg_ms", hue="method", marker="o")
-# plt.title("Avg Run Time: LES3 vs LeBQ vs LeBQ+ vs DualTrans (M=8, CBDF)")
-# plt.savefig(f"results/figs/comparison_runtime_{DATASET}.png", bbox_inches="tight")
-# plt.clf()
+comp = pd.read_csv(f"results/comparison_{DATASET}.csv")
+sns.lineplot(data=comp, x="delta", y="avg_ms", hue="method", marker="o")
+plt.title("Avg Run Time: LES3 vs LeBQ vs LeBQ+ vs DualTrans (M=8, CBDF)")
+plt.savefig(f"results/figs/comparison_runtime_{DATASET}.png", bbox_inches="tight")
+plt.clf()

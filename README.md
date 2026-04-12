@@ -68,19 +68,10 @@ If baseline code is not already present under `baselines/les3-dualtrans`:
 
 ```bash
 cd baselines
-git clone https://github.com/ducquando/leb-baselines.git
-rm -rf build && mkdir -p build
-cd build
-clang++ -O3 -std=c++17 -I../les3-dualtrans ../les3-dualtrans/Search/test_search.cpp -o ../les3_dualtrans
-cd ..
-chmod +x les3_dualtrans
-cd ..
+git clone https://github.com/princeampofo/learning-based-set-sim-search
 ```
 
-The benchmark script `scripts/run_baseline.sh` expects:
-
-- executable at `baselines/les3_dualtrans`
-- datasets under `baselines/les3-dualtrans/datasets/...`
+Then follow the steps in the readme to reproduce the results for LES3 and DualTrans.
 
 ## CLI usage
 
@@ -136,7 +127,6 @@ bash scripts/run_all.sh
 Or run experiments individually (replace dataset with `kosarak`, `retail`, or `lastfm360k`):
 
 ```bash
-bash scripts/run_baseline.sh kosarak
 bash scripts/run_m.sh kosarak
 bash scripts/run_filter.sh kosarak
 bash scripts/run_scale.sh kosarak
@@ -144,9 +134,6 @@ bash scripts/run_compare.sh kosarak
 ```
 
 ### What each script produces
-
-- `scripts/run_baseline.sh` -> `results/les3_dualtrans_<dataset>.csv`
-  - LES3 and DualTrans runtime/index-size measurements
 - `scripts/run_m.sh` -> `results/m_experiment_<dataset>.csv`
   - LeBQ/LeBQ+ runtime vs bucket count `M`
 - `scripts/run_filter.sh` -> `results/filter_experiment_<dataset>.csv`

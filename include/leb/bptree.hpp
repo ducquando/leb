@@ -15,7 +15,7 @@ namespace leb {
         const size_t ORDER;
         std::map<Key64, std::vector<SetID>> data;
 
-        explicit BPTree(size_t order = 128) : ORDER(order) {}
+        explicit BPTree(size_t order = 256) : ORDER(order) {}
 
         void insert(Key64 k, SetID id) {
             data[k].push_back(id);

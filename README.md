@@ -64,14 +64,14 @@ This produces:
 
 ## Baseline setup (LES3 and DualTrans)
 
-If baseline code is not already present under `baselines/les3-dualtrans`:
+Clone the baseline code if it is not already presented under `baselines`:
 
 ```bash
+git clone https://github.com/princeampofo/learning-based-set-sim-search.git baselines
 cd baselines
-git clone https://github.com/princeampofo/learning-based-set-sim-search
+bash run_experiments.sh
+cd ..
 ```
-
-Then follow the steps in the readme to reproduce the results for LES3 and DualTrans.
 
 ## CLI usage
 
@@ -84,7 +84,7 @@ Then follow the steps in the readme to reproduce the results for LES3 and DualTr
 Example:
 
 ```bash
-./build/main_build data/kosarak.dat 8 128 results/leb_kosarak --save-index results/leb_kosarak.idxbin
+./build/main_build data/kosarak.dat 8 256 results/leb_kosarak --save-index results/leb_kosarak.idxbin
 ```
 
 Output fields include:
@@ -101,8 +101,8 @@ Output fields include:
 Examples:
 
 ```bash
-./build/main_query data/kosarak.dat 8 128 lebq 0.7 1000 1 42 --filter cbdf --log-cand 1
-./build/main_query data/kosarak.dat 8 128 lebq+ 0.7 1000 1 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 256 lebq 0.7 1000 1 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 256 lebq+ 0.7 1000 1 42 --filter cbdf --log-cand 1
 ```
 
 Output fields include:

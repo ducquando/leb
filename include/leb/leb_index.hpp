@@ -14,7 +14,7 @@ namespace leb {
         std::vector<Key64> key_of_set;          // cached keys
         uint64_t Mb;                            // per-field max
 
-        explicit LeBIndex(int M_, size_t bpt_order = 128) : M(M_), packer(M_), bm(M_), tree(bpt_order) {
+        explicit LeBIndex(int M_, size_t bpt_order = 256) : M(M_), packer(M_), bm(M_), tree(bpt_order) {
             Mb = packer.max_field();
         }
 

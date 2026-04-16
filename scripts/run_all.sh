@@ -32,3 +32,8 @@ for DATASET in kosarak retail lastfm1k; do
   echo "== Run Cross-method comparisons for $DATASET =="
   bash scripts/run_compare.sh $DATASET
 done
+
+for DATASET in kosarak retail lastfm1k; do
+  echo "== Visualize graphs for $DATASET =="
+  python3 scripts/plot_results.py --dataset $DATASET
+done

@@ -2,11 +2,11 @@
 set -euo pipefail
 BASE=baselines/les3-dualtrans
 BIN=baselines/les3_dualtrans
-DATASET=$1             # kosarak|retail|lastfm360k
+DATASET=$1             # kosarak|retail|lastfm1k
 OUT=results/les3_dualtrans_${DATASET}.csv
 
 # Select data file
-if [[ "$DATASET" == "lastfm360k" ]]; then
+if [[ "$DATASET" == "lastfm1k" ]]; then
   DATA="$BASE/datasets/${DATASET}/all.fimi"
 elif [[ "$DATASET" == "kosarak" || "$DATASET" == "retail" ]]; then
   DATA="$BASE/datasets/${DATASET}/all.dat"

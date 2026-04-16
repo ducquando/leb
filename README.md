@@ -124,7 +124,7 @@ Run everything end-to-end:
 bash scripts/run_all.sh
 ```
 
-Or run experiments individually (replace dataset with `kosarak`, `retail`, or `lastfm360k`):
+Or run experiments individually (replace dataset with `kosarak`, `retail`, or `lastfm1k`):
 
 ```bash
 bash scripts/run_m.sh kosarak
@@ -150,7 +150,7 @@ After CSVs are generated:
 ```bash
 python3 scripts/plot_results.py --dataset kosarak
 python3 scripts/plot_results.py --dataset retail
-python3 scripts/plot_results.py --dataset lastfm360k
+python3 scripts/plot_results.py --dataset lastfm1k
 ```
 
 Figures are saved to `results/figs/`.
@@ -161,7 +161,7 @@ Figures are saved to `results/figs/`.
 - Typical file names used by scripts:
   - `data/kosarak.dat`
   - `data/retail.dat`
-  - `data/lastfm360k.fimi`
+  - `data/lastfm1k.dat`
 
 ## Reproducibility notes
 

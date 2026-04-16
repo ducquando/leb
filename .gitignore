@@ -1,6 +1,5 @@
 .DS_Store
 .vscode
-lastfm1k.fimi
 
 build/
 scripts/prep_lastfm*k.py

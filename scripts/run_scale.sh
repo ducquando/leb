@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 BASE=./data
-DATASET=$1          # kosarak|retail|lastfm360k
+DATASET=$1          # kosarak|retail|lastfm1k
 ORDER=256
 Q=1000
 RUNS=10
@@ -10,17 +10,7 @@ M=8
 DELTA=0.7
 PROPS=(0.25 0.5 0.75 1.0)
 
-# Select data file
-if [[ "$DATASET" == "lastfm360k" ]]; then
-  FORMAT="fimi"
-elif [[ "$DATASET" == "kosarak" || "$DATASET" == "retail" ]]; then
-  FORMAT="dat"
-else
-  echo "Unknown dataset: $DATASET"
-  exit 1
-fi
-
-DATA="$BASE/${DATASET}.$FORMAT"
+DATA="$BASE/${DATASET}.dat"
 OUTFILE="results/scale_experiment_${DATASET}.csv"
 echo "method,dataset,prop,delta,avg_ms" > "$OUTFILE"
 

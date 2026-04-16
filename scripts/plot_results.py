@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # -----------------------
 parser = argparse.ArgumentParser()
 parser.add_argument("--dataset", type=str, required=True,
-                    help="Dataset name: kosarak | retail | lastfm360k")
+                    help="Dataset name: kosarak | retail | lastfm1k")
 args = parser.parse_args()
 DATASET = args.dataset
 

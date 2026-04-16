@@ -1,0 +1,11 @@
+method,dataset,M,delta,avg_ms,avg_candidates
+lebq,./data/kosarak.dat,4,0.7,10.328
+lebq,./data/kosarak.dat,6,0.7,6.60449
+lebq,./data/kosarak.dat,8,0.7,5.05985
+lebq,./data/kosarak.dat,10,0.7,4.00886
+lebq,./data/kosarak.dat,12,0.7,3.32768
+lebq+,./data/kosarak.dat,4,0.7,8.37648
+lebq+,./data/kosarak.dat,6,0.7,4.9337
+lebq+,./data/kosarak.dat,8,0.7,3.75476
+lebq+,./data/kosarak.dat,10,0.7,3.65251
+lebq+,./data/kosarak.dat,12,0.7,5.37883

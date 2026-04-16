@@ -1,0 +1,11 @@
+method,dataset,M,delta,avg_ms,avg_candidates
+lebq,./data/retail.dat,4,0.7,2.25688
+lebq,./data/retail.dat,6,0.7,1.81228
+lebq,./data/retail.dat,8,0.7,1.87029
+lebq,./data/retail.dat,10,0.7,2.16039
+lebq,./data/retail.dat,12,0.7,1.70486
+lebq+,./data/retail.dat,4,0.7,1.69047
+lebq+,./data/retail.dat,6,0.7,1.51105
+lebq+,./data/retail.dat,8,0.7,1.41185
+lebq+,./data/retail.dat,10,0.7,1.78785
+lebq+,./data/retail.dat,12,0.7,2.54752

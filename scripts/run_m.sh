@@ -6,7 +6,7 @@ ALGOS=("lebq" "lebq+")
 MS=(4 6 8 10 12)
 DELTA=0.7
 Q=1000
-RUNS=10
+RUNS=1
 SEED=42
 ORDER=256
 

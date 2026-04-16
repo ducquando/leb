@@ -1,0 +1,7 @@
+method,dataset,index_size_mb
+LES3,kosarak,4.52
+DualTrans,kosarak,129.54
+LES3,lastfm,1.14
+DualTrans,lastfm,123.55
+LES3,retail,0.98
+DualTrans,retail,11.45

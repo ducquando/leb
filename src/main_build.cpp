@@ -1,6 +1,7 @@
 #include "leb_index.hpp"
 #include "util.hpp"
 #include <fstream>
+#include <iomanip>
 #include <sstream>
 #include <unordered_set>
 
@@ -45,11 +46,12 @@ int main(int argc, char** argv) {
     LeBIndex idx(M, order);
     Timer t; t.tick();
     idx.build(std::move(data));
-    double ms = t.to_ms();
 
     // Report stats
-    std::cout << "INDEX_BUILD_MS " << ms << "\n";
-    std::cout << "SETS " << idx.sets.size() << " M " << M << " b " << idx.packer.bits_per_field() << "\n";
+    const double total_mb = (double)(idx.sets.size() * sizeof(Item)) / (1024.0 * 1024.0);
+    double min = t.to_ms() / 3600.0;
+    std::cout << "INDEX_BUILD_MIN " << min << "\n";
+    std::cout << "INDEX_SIZE_MB " << total_mb << "\n";
 
     // Save leaf keys + payloads
     if (!save_path.empty()) {

@@ -2,4 +2,6 @@
 .vscode
 
 build/
+results/
+baselines/
 scripts/prep_lastfm*k.py

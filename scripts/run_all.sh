@@ -6,16 +6,11 @@ BUILD=./build
 SCRIPT=./scripts
 RESULT=./results
 M=8
-ORDER=128
-
-echo "== Build indices =="
-$BUILD/main_build $DATA/kosarak.dat $M $ORDER $RESULT/leb_kosarak --save-index $RESULT/leb_kosarak.idxbin
-$BUILD/main_build $DATA/retail.dat $M $ORDER $RESULT/leb_retail --save-index $RESULT/leb_retail.idxbin
-$BUILD/main_build $DATA/lastfm1k.dat $M $ORDER $RESULT/leb_lastfm1k --save-index $RESULT/leb_lastfm1k.idxbin
+ORDER=256
 
 for DATASET in kosarak retail lastfm1k; do
-  echo "== Run baseline models for $DATASET =="
-  bash $SCRIPT/run_baseline.sh $DATASET
+  echo "== Run index construction for $DATASET =="
+  bash $SCRIPT/run_index.sh $DATASET
 done
 
 for DATASET in kosarak retail lastfm1k; do

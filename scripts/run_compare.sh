@@ -11,6 +11,7 @@ DELTAS=(0.5 0.6 0.7 0.8 0.9)
 
 DATA="$BASE/${DATASET}.dat"
 OUTFILE="results/comparison_${DATASET}.csv"
+BASELINES="./baselines/results/${DATASET}_results.csv"
 echo "method,dataset,delta,avg_ms,avg_candidates" > "$OUTFILE"
 
 for D in "${DELTAS[@]}"; do
@@ -24,4 +25,4 @@ for D in "${DELTAS[@]}"; do
 done
 
 # Append LES3 & DualTrans rows from run_baseline.sh outputs
-awk -F, 'NR>1{print $1",""'$DATASET'"","$3","$4",NA"}' results/les3_dualtrans_${DATASET}.csv >> "$OUTFILE"
+awk -F, 'NR>1{print $1",""'$DATASET'"","$3","$4","$5}' "$BASELINES" >> "$OUTFILE"

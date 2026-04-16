@@ -101,8 +101,8 @@ Output fields include:
 Examples:
 
 ```bash
-./build/main_query data/kosarak.dat 8 128 lebq 0.7 1000 10 42 --filter cbdf --log-cand 1
-./build/main_query data/kosarak.dat 8 128 lebq+ 0.7 1000 10 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 128 lebq 0.7 1000 1 42 --filter cbdf --log-cand 1
+./build/main_query data/kosarak.dat 8 128 lebq+ 0.7 1000 1 42 --filter cbdf --log-cand 1
 ```
 
 Output fields include:
@@ -127,21 +127,12 @@ bash scripts/run_all.sh
 Or run experiments individually (replace dataset with `kosarak`, `retail`, or `lastfm1k`):
 
 ```bash
+bash scripts/run_index.sh kosarak
 bash scripts/run_m.sh kosarak
 bash scripts/run_filter.sh kosarak
 bash scripts/run_scale.sh kosarak
 bash scripts/run_compare.sh kosarak
 ```
-
-### What each script produces
-- `scripts/run_m.sh` -> `results/m_experiment_<dataset>.csv`
-  - LeBQ/LeBQ+ runtime vs bucket count `M`
-- `scripts/run_filter.sh` -> `results/filter_experiment_<dataset>.csv`
-  - runtime and candidate counts across filter modes `none|sbdf|cbdf`
-- `scripts/run_scale.sh` -> `results/scale_experiment_<dataset>.csv`
-  - runtime vs dataset proportion
-- `scripts/run_compare.sh` -> `results/comparison_<dataset>.csv`
-  - LeBQ/LeBQ+ plus LES3/DualTrans combined comparison table
 
 ## Plot figures
 

@@ -22,7 +22,7 @@ print(max(1,int(N*$P)))
 EOF
 ) "$DATA" > "data/${DATASET}_tmp_${P}.dat"
   for A in lebq lebq+; do
-    ms=$(./build/main_query "data/${DATASET}_tmp_${P}.$FORMAT" $M $ORDER $A $DELTA $Q $RUNS $SEED --filter cbdf \
+    ms=$(./build/main_query "data/${DATASET}_tmp_${P}.dat" $M $ORDER $A $DELTA $Q $RUNS $SEED --filter cbdf \
           | awk '/QUERY_AVG_MS/{print $2}')
     echo "$A,$DATA,$P,$DELTA,$ms" >> "$OUTFILE"
   done

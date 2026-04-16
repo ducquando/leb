@@ -5,8 +5,6 @@ DATA=./data
 BUILD=./build
 SCRIPT=./scripts
 RESULT=./results
-M=8
-ORDER=256
 
 for DATASET in kosarak retail lastfm1k; do
   echo "== Run index construction for $DATASET =="
@@ -29,7 +27,7 @@ for DATASET in kosarak retail lastfm1k; do
 done
 
 for DATASET in kosarak retail lastfm1k; do
-  echo "== Run Cross-method comparisons for $DATASET =="
+  echo "== Run cross-method comparisons for $DATASET =="
   bash scripts/run_compare.sh $DATASET
 done
 

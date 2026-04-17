@@ -122,21 +122,21 @@ save_pointplot(
 # Construction comparisons
 # -----------------------
 fig, axes = plt.subplots(2, 1, figsize=FIG_SIZE)
-all_comp = []
-for dataset in ["kosarak", "retail", "lastfm1k"]:
+all_comp, datasets, methods = [], ["retail", "lastfm1k", "kosarak"], ["LES3", "LeBQ", "DualTrans"]
+for dataset in datasets:
     comp = pd.read_csv(f"results/index_{dataset}.csv")
     comp["dataset"] = dataset
     all_comp.append(comp)
-comp = pd.concat(all_comp, ignore_index=True)
+comp = pd.concat(all_comp)
 comp_plot = (comp.groupby(["dataset", "method"], as_index=False)[["construction_time_min", "index_size_mb"]].mean())
 
-sns.barplot(data=comp_plot, x="dataset", y="construction_time_min", hue="method", ax=axes[0], legend=False)
+sns.barplot(data=comp_plot, x="dataset", y="construction_time_min", hue="method", hue_order=methods, order=datasets, ax=axes[0], legend=False)
 axes[0].set_title("Construction Time")
 axes[0].set_xlabel(None)
 axes[0].set_ylabel("Minute")
 axes[0].set_yscale("log")
 
-sns.barplot(data=comp_plot, x="dataset", y="index_size_mb", hue="method", ax=axes[1])
+sns.barplot(data=comp_plot, x="dataset", y="index_size_mb", hue="method", hue_order=methods, order=datasets, ax=axes[1])
 axes[1].set_title("Index Size")
 axes[1].set_xlabel(None)
 axes[1].set_ylabel("MB")

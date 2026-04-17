@@ -101,5 +101,5 @@ Figures are saved to `results/figs/`.
 
 ## Reproducibility notes
 
-- Script defaults use fixed seeds (`SEED=42` in several scripts).
+- Script defaults use the fixed seed set `(2, 4, 24, 42, 242)` for repeated query experiments.
 - Main query comparisons generally run with CBDF filtering enabled.

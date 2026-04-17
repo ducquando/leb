@@ -1,4 +1,4 @@
 method,dataset,construction_time_min,index_size_mb
-LeBQ,kosarak,0.731028,3.77656
-LES3,kosarak,166.25,4
-DualTrans,kosarak,1.54665,8.70
+LeBQ,kosarak,0.76449,3.77656
+LES3,kosarak,327.22,4.52
+DualTrans,kosarak,1.55585,129.54

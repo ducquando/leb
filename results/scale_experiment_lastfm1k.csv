@@ -1,9 +1,9 @@
 method,dataset,prop,delta,avg_ms
-lebq,./data/lastfm1k.dat,0.25,0.7,0.638636
-lebq+,./data/lastfm1k.dat,0.25,0.7,0.515792
-lebq,./data/lastfm1k.dat,0.5,0.7,1.28294
-lebq+,./data/lastfm1k.dat,0.5,0.7,1.14872
-lebq,./data/lastfm1k.dat,0.75,0.7,1.9426
-lebq+,./data/lastfm1k.dat,0.75,0.7,1.66482
-lebq,./data/lastfm1k.dat,1.0,0.7,2.68449
-lebq+,./data/lastfm1k.dat,1.0,0.7,2.39102
+lebq,./data/lastfm1k.dat,0.25,0.7,0.561119
+lebq+,./data/lastfm1k.dat,0.25,0.7,0.449019
+lebq,./data/lastfm1k.dat,0.5,0.7,1.1328
+lebq+,./data/lastfm1k.dat,0.5,0.7,0.98063
+lebq,./data/lastfm1k.dat,0.75,0.7,1.72093
+lebq+,./data/lastfm1k.dat,0.75,0.7,1.51419
+lebq,./data/lastfm1k.dat,1.0,0.7,2.4897
+lebq+,./data/lastfm1k.dat,1.0,0.7,2.23544

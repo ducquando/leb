@@ -17,7 +17,7 @@ echo "method,dataset,M,delta,avg_ms,avg_candidates" > "$OUTFILE"
 for A in "${ALGOS[@]}"; do
   for M in "${MS[@]}"; do
     ./build/main_query "$DATA" $M $ORDER $A $DELTA $Q $RUNS $SEED --filter cbdf \
-      | awk -v m=$M -v alg=$A -v d=$DATA -v de=$DELTA '/QUERY_AVG_MS/{print alg","d","m","de","$2}' \
+      | awk -v m=$M -v alg=$A -v d=$DATASET -v de=$DELTA '/QUERY_AVG_MS/{print alg","d","m","de","$2}' \
       >> "$OUTFILE"
   done
 done

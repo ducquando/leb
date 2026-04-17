@@ -1,9 +1,9 @@
 method,dataset,prop,delta,avg_ms
-lebq,./data/kosarak.dat,0.25,0.7,0.996612
-lebq+,./data/kosarak.dat,0.25,0.7,0.798701
-lebq,./data/kosarak.dat,0.5,0.7,2.11463
-lebq+,./data/kosarak.dat,0.5,0.7,1.66356
-lebq,./data/kosarak.dat,0.75,0.7,3.24841
-lebq+,./data/kosarak.dat,0.75,0.7,3.10351
-lebq,./data/kosarak.dat,1.0,0.7,4.69304
-lebq+,./data/kosarak.dat,1.0,0.7,3.60778
+lebq,./data/kosarak.dat,0.25,0.7,0.878351
+lebq+,./data/kosarak.dat,0.25,0.7,0.649677
+lebq,./data/kosarak.dat,0.5,0.7,1.82423
+lebq+,./data/kosarak.dat,0.5,0.7,1.39527
+lebq,./data/kosarak.dat,0.75,0.7,2.8712
+lebq+,./data/kosarak.dat,0.75,0.7,2.16937
+lebq,./data/kosarak.dat,1.0,0.7,4.12227
+lebq+,./data/kosarak.dat,1.0,0.7,3.0357

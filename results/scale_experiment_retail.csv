@@ -1,9 +1,9 @@
 method,dataset,prop,delta,avg_ms
-lebq,./data/retail.dat,0.25,0.7,0.579792
-lebq+,./data/retail.dat,0.25,0.7,0.476705
-lebq,./data/retail.dat,0.5,0.7,1.06858
-lebq+,./data/retail.dat,0.5,0.7,0.848154
-lebq,./data/retail.dat,0.75,0.7,1.43715
-lebq+,./data/retail.dat,0.75,0.7,1.13186
-lebq,./data/retail.dat,1.0,0.7,2.12144
-lebq+,./data/retail.dat,1.0,0.7,1.55239
+lebq,./data/retail.dat,0.25,0.7,0.415838
+lebq+,./data/retail.dat,0.25,0.7,0.311542
+lebq,./data/retail.dat,0.5,0.7,0.765547
+lebq+,./data/retail.dat,0.5,0.7,0.533052
+lebq,./data/retail.dat,0.75,0.7,1.01316
+lebq+,./data/retail.dat,0.75,0.7,0.714637
+lebq,./data/retail.dat,1.0,0.7,1.33664
+lebq+,./data/retail.dat,1.0,0.7,0.916353

@@ -3,4 +3,5 @@
 
 build/
 baselines/
+results/log
 scripts/prep_lastfm*k.py

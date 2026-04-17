@@ -53,7 +53,7 @@ save_pointplot(
     hue="method",
     title=f"Impact of number of buckets M on query time ({DATASET}, δ=0.7)",
     xlabel="M",
-    ylabel="Avg query time (ms)",
+    ylabel="Query time (ms)",
     output_path=f"results/figs/m_experiment_{DATASET}.png",
     order=sorted(dm["M"].dropna().unique()),
 )
@@ -69,8 +69,8 @@ save_lineplot(
     hue="method", 
     style="filter",
     title=f"Average Run Time by filtering mode ({DATASET}, M=8)",
-    xlabel="Delta",
-    ylabel="Avg query time (ms)",
+    xlabel="δ",
+    ylabel="Run time (ms)",
     output_path=f"results/figs/filter_experiment_ms_{DATASET}.png",
 )
 save_lineplot(
@@ -80,8 +80,8 @@ save_lineplot(
     hue="method", 
     style="filter",
     title=f"Number of Candidates by filtering mode ({DATASET}, M=8)",
-    xlabel="Delta",
-    ylabel="Avg number of candidates",
+    xlabel="δ",
+    ylabel="Number of candidates",
     output_path=f"results/figs/filter_experiment_cand_{DATASET}.png",
     yscale="log",
 )
@@ -97,7 +97,7 @@ save_pointplot(
     hue="method",
     title=f"Run time vs dataset proportion ({DATASET}, δ=0.7, M=8, CBDF)",
     xlabel="Dataset proportion",
-    ylabel="Avg run time (ms)",
+    ylabel="Run time (ms)",
     output_path=f"results/figs/scale_experiment_{DATASET}.png",
     order=sorted(dsc["prop"].dropna().unique()),
 )
@@ -112,8 +112,8 @@ save_pointplot(
     y="avg_ms",
     hue="method",
     title=f"Avg Run Time ({DATASET}, M=8, CBDF)",
-    xlabel="delta",
-    ylabel="Avg run time (ms)",
+    xlabel="δ",
+    ylabel="Run time (ms)",
     output_path=f"results/figs/comparison_runtime_{DATASET}.png",
     order=sorted(comp["delta"].dropna().unique()),
 )
@@ -131,15 +131,13 @@ comp = pd.concat(all_comp)
 comp_plot = (comp.groupby(["dataset", "method"], as_index=False)[["construction_time_min", "index_size_mb"]].mean())
 
 sns.barplot(data=comp_plot, x="dataset", y="construction_time_min", hue="method", hue_order=methods, order=datasets, ax=axes[0], legend=False)
-axes[0].set_title("Construction Time")
 axes[0].set_xlabel(None)
-axes[0].set_ylabel("Minute")
+axes[0].set_ylabel("Construction Time (min)")
 axes[0].set_yscale("log")
 
 sns.barplot(data=comp_plot, x="dataset", y="index_size_mb", hue="method", hue_order=methods, order=datasets, ax=axes[1])
-axes[1].set_title("Index Size")
 axes[1].set_xlabel(None)
-axes[1].set_ylabel("MB")
+axes[1].set_ylabel("Index Size (MB)")
 axes[1].set_yscale("log")
 
 fig.tight_layout()

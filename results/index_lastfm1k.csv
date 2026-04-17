@@ -1,4 +1,4 @@
 method,dataset,construction_time_min,index_size_mb
 LeBQ,lastfm1k,0.599732,3.66364
 LES3,lastfm1k,98.82,1.14
-DualTrans,lastfm1k,1.88551,123.55
+DualTrans,lastfm1k,3.72908,123.55

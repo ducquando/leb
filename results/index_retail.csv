@@ -1,4 +1,4 @@
 method,dataset,construction_time_min,index_size_mb
 LeBQ,retail,0.0850883,0.336311
 LES3,retail,13.02,0.98
-DualTrans,retail,0.0677924,11.45
+DualTrans,retail,0.127828,11.45

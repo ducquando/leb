@@ -26,5 +26,5 @@ for S in "${SEEDS[@]}"; do
   done
 done
 
-# Append LES3 & DualTrans rows from run_baseline.sh outputs
+# Append LES3 & DualTrans rows from baseline outputs
 awk -F, 'NR>1{print $1",""'$DATASET'"",,"$3","$4","$5}' "$BASELINES" >> "$OUTFILE"

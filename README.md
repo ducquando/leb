@@ -62,22 +62,6 @@ This produces:
 - `build/main_query`
 - `build/main_stats`
 
-## Baseline setup (LES3 and DualTrans)
-
-Clone the baseline code if it is not already presented under `baselines`:
-
-```bash
-git clone https://github.com/princeampofo/learning-based-set-sim-search.git baselines
-```
-
-Then, run the baseline models:
-
-```bash
-cd baselines
-bash run_experiments.sh
-cd ..
-```
-
 ## Workflow
 
 Run everything end-to-end:

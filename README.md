@@ -70,7 +70,7 @@ Run everything end-to-end:
 bash scripts/run_all.sh
 ```
 
-Or run experiments individually (replace dataset with `kosarak`, `retail`, or `lastfm1k`):
+Or run individual experiment on a specific dataset (`kosarak`, `retail`, or `lastfm1k`):
 
 ```bash
 bash scripts/run_index.sh kosarak
@@ -85,5 +85,5 @@ Figures are saved to `results/figs/`.
 
 ## Reproducibility notes
 
-- Script defaults use the fixed seed set `(2, 4, 24, 42, 242)` for repeated query experiments.
+- Script defaults use the fixed seed set `(2, 4, 24, 42, 0)` for repeated query experiments.
 - Main query comparisons generally run with CBDF filtering enabled.

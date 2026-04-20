@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 # Args
 # -----------------------
 parser = argparse.ArgumentParser()
-parser.add_argument("--dataset", type=str, required=True,
-                    help="Dataset name: kosarak | retail | lastfm1k")
+parser.add_argument("--dataset", type=str, required=True, help="Dataset name: kosarak | retail | lastfm1k")
 args = parser.parse_args()
 DATASET = args.dataset
 FIG_SIZE = (9, 5)
@@ -18,7 +17,6 @@ FIG_SIZE = (9, 5)
 # Setup
 # -----------------------
 os.makedirs("results/figs", exist_ok=True)
-# sns.set_theme(style="whitegrid", font_scale=1.1)
 
 def save_pointplot(data, x, y, hue, title, xlabel, ylabel, output_path, order=None, yscale="linear"):
     fig, ax = plt.subplots(figsize=FIG_SIZE)
@@ -33,7 +31,7 @@ def save_pointplot(data, x, y, hue, title, xlabel, ylabel, output_path, order=No
 
 def save_lineplot(data, x, y, hue, style, title, xlabel, ylabel, output_path, yscale="linear"):
     fig, ax = plt.subplots(figsize=FIG_SIZE)
-    sns.lineplot(data=data, x=x, y=y, hue=hue, style=style, marker="o", ax=ax)
+    sns.lineplot(data=data, x=x, y=y, hue=hue, style=style, estimator="mean", errorbar=("ci", 95), marker="o", ax=ax)
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)

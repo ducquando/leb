@@ -68,6 +68,7 @@ Run everything end-to-end:
 
 ```bash
 bash scripts/run_all.sh
+python3 scripts/plot_results_all.py
 ```
 
 Or run individual experiment on a specific dataset (`kosarak`, `retail`, or `lastfm1k`):

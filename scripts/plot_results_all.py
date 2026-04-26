@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 DATASETS = ["retail", "lastfm1k", "kosarak"]
-FIG_SIZE = (16, 4.5)
+FIG_SIZE = (16, 3.5)
 
 os.makedirs("results/figs", exist_ok=True)
 
@@ -148,7 +148,7 @@ save_pointplot_across_datasets(
     y="avg_ms",
     hue="method",
     xlabel="M",
-    ylabel="Query time (ms)",
+    ylabel="Run time (ms)",
     output_path="results/figs/m_experiment_all.png",
     order_col="M",
 )

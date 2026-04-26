@@ -188,6 +188,17 @@ save_pointplot_across_datasets(
     output_path="results/figs/scale_experiment_all.png",
     order_col="prop",
 )
+save_pointplot_across_datasets(
+    file_pattern="results/scale_experiment_{dataset}.csv",
+    x="prop",
+    y="avg_candidates",
+    hue="method",
+    xlabel="Dataset proportion",
+    ylabel="Number of candidates",
+    output_path="results/figs/scale_experiment_cand_all.png",
+    order_col="prop",
+    yscale="log",
+)
 
 # Baseline comparisons
 save_pointplot_across_datasets(
@@ -199,6 +210,17 @@ save_pointplot_across_datasets(
     ylabel="Run time (ms)",
     output_path="results/figs/comparison_runtime_all.png",
     order_col="delta",
+)
+save_pointplot_across_datasets(
+    file_pattern="results/comparison_{dataset}.csv",
+    x="delta",
+    y="avg_candidates",
+    hue="method",
+    xlabel="δ",
+    ylabel="Number of candidates",
+    output_path="results/figs/comparison_cand_all.png",
+    order_col="delta",
+    yscale="log",
 )
 
 # Construction comparisons
